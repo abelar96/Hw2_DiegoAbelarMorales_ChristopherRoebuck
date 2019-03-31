@@ -13,5 +13,7 @@
         <url-pattern>/emailList</url-pattern>
         <url-pattern>/viewAll</url-pattern>
         <url-pattern>/remove</url-pattern>
+        <url-pattern>/update</url-pattern>
+        <url-pattern>/updateR</url-pattern>
     </servlet-mapping>
 </web-app>

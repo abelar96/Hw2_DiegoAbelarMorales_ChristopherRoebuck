@@ -29,9 +29,7 @@ public class EmailListServlet extends HttpServlet {
 
         }
         else if (action.equals("viewAll")){
-            //String firstName = request.getParameter("firstName");
-            //String lastName = request.getParameter("lastName");
-            //String email = request.getParameter("email");
+
             ArrayList<User> users = UserDB.selectUsers();
             request.setAttribute("users",users);
             url= "/viewAll.jsp";
@@ -40,6 +38,31 @@ public class EmailListServlet extends HttpServlet {
 
             String email = request.getParameter("email");
             UserDB.delete(email);
+          //fetch data again
+            ArrayList<User> users = UserDB.selectUsers();
+            request.setAttribute("users",users);
+            url= "/viewAll.jsp";
+
+        }
+        else if (action.equals("update")){
+
+            ArrayList<User> users = UserDB.selectUsers();
+            request.setAttribute("users",users);
+            url= "/update.jsp";
+
+        }
+        else if (action.equals("updateR")){
+
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String email = request.getParameter("email");
+
+            User user = new User(firstName,lastName,email);
+            UserDB.update(user);
+
+            ArrayList<User> users = UserDB.selectUsers();
+            request.setAttribute("users",users);
+            url= "/update.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
 

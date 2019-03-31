@@ -16,7 +16,7 @@ public class UserDB implements Serializable {
             try {
 
                Class.forName("com.mysql.jdbc.Driver");
-                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "mysql");
+                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306/email_list", "root", "mysql");
                 ps = conc.prepareStatement(insert);
                 ps.setString(1,user.getFirstname());
                 ps.setString(2,user.getLastname());
@@ -47,7 +47,7 @@ public class UserDB implements Serializable {
             try {
 
                 Class.forName(".com.mysql.jdbc.Driver");
-                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "mysql");
+                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306/email_list", "root", "mysql");
                 ps = conc.prepareStatement(insert);
                 ps.setString(1,user.getFirstname());
                 ps.setString(2,user.getLastname());
@@ -69,12 +69,12 @@ public class UserDB implements Serializable {
 
         Connection conc;
         PreparedStatement ps = null;
-        String delete = "delete from email_user WHERE emai_user_email = ?";
+        String delete = "delete from email_user WHERE email_user_email = ?";
 
         {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "mysql");
+                conc = DriverManager.getConnection("jdbc:mysql://localhost:3306/email_list", "root", "mysql");
                 ps = conc.prepareStatement(delete);
                 ps.setString(1,email);
 
