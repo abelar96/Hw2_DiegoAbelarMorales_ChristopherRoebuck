@@ -1,0 +1,33 @@
+body{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    margin: 10px;
+
+}
+div{
+    width: 400px;
+    height: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+h1{
+    color: #557cff;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+}
+​
+br{
+    clear: both;
+}
+
+submit{
+
+    margin-left: 1.5em;
+}
+
+a{
+    margin-left: 2.0em;
+}
