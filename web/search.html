@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/styleMain.css">
+</head>
+<body>
+<h1>Search Page</h1>
+<div>
+<form action="search" method="post">
+
+    <input type="hidden" name="action" value="searchFname">
+    <input id="search3"  type="submit" value="Search by First Name" >
+    <input type="text" name="firstName" required>
+
+</form><br>
+
+
+<form action="search" method="post">
+
+    <input type="hidden" name="action" value="searchLname" >
+    <input id="search1" type="submit" value="Search by Last Name">
+    <input type="text" name="lastName" required>
+
+</form><br>
+
+<form action="search" method="post">
+
+    <input type="hidden" name="action" value="searchEmail" required>
+    <input id="search2" type="submit" value="Search by Email">
+    <input type="text" name="email" required>
+
+</form><br><br>
+    <a href="index.html"> <button> Return to Main Page</button></a>
+</div>
+
+</body>
+</html>

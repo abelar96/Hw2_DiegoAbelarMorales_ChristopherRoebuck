@@ -10,39 +10,36 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        table,th,td{
-            border-collapse: collapse;
-            border:1px solid black;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styleMain.css">
 </head>
 <body>
-<form action="updateR" method="post">
-    <input type="hidden" name="action" value="update">
+
+<div>
 <table>
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th></th>
-
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
-            <td><input type="text" name="firstname"></td>
-            <td><input type="text" name="lastname" value="<c:out value="${user.lastname}"/>"></td>
-            <td><input type="text" name="email" value="<c:out value="${user.email}"/>"></td>
+            <td><c:out value="${user.firstname}"/></td>
+            <td><c:out value="${user.lastname}"/></td>
+            <td><c:out value="${user.email}"/></td>
             <td>
-                <input type="hidden" name="action" value="delete">
+                <form action="updateR" method="post">
+                 <input type="hidden" name="action" value="updateR">
+                <input type="hidden" name="id" value="<c:out value="${user.id}"/>">
                 <input type="submit" value="update">
+                </form>
             </td>
         </tr>
 
     </c:forEach>
-</table>
-</form>
+</table><br><br>
+<a href="index.html"> <button> Return to Main Page</button></a>
 
+</div>
 </body>
 </html>

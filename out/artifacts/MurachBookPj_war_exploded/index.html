@@ -3,33 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel = "stylesheet" href="css/styleMain.css">
+    <link rel="stylesheet" href="css/styleMain.css">
 </head>
 <body>
-
-
+<h1>Welcome to by Website!</h1>
 <div>
-<form action="emailList" method="post">
-    <h1> Join our email list</h1>
-    <p>To join email list , Enter your name and address bellow </p>
-    <input type ="hidden" name="action" value ="add">
+    <form action="emailList" method="post">
+        <h1> Join our email list</h1>
+        <p>To join email list , Enter your name and address bellow </p>
+        <input type="hidden" name="action" value="add">
 
-    <label>Email</label>
-    <input type="email" name="email" required><br><br>
+        <label>Email</label>
+        <input type="email" name="email" required><br><br>
 
-    <label>First Name</label>
-    <input type="text" name="firstName" required><br><br>
+        <label>First Name</label>
+        <input type="text" name="firstName" required><br><br>
 
-    <label>Last Name</label>
-    <input type="text" name="lastName" required><br><br>
+        <label>Last Name</label>
+        <input type="text" name="lastName" required><br><br>
 
-    <input type="submit" value="Join now" id="submit">
-</form>
-    <a href="delete.jsp"><button>Unsubscribe</button></a>
+        <input type="submit" value="Join now" id="submit">
+    </form><br><br>
+
     <form action="viewAll" method="post">
-        <input type="hidden" name="action" value="viewAll"><input type="submit" value="View All">
+        <input type="hidden" name="action" value="viewAll"><input type="submit" value="View Users">
     </form>
-    <a href="update.jsp"><button>Update</button></a>
+
+    <form action="delete" method="post">
+        <input type="hidden" name="action" value="delete"><input type="submit" value="Delete Users">
+    </form>
+
+    <form action="update" method="post">
+        <input type="hidden" name="action" value="update"><input type="submit" value="Update Users">
+    </form>
+
+    <a href="search.html"><button>Search Users</button></a>
 
 </div>
 

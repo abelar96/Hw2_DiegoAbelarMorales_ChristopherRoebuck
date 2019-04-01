@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Diego's Dell PC
-  Date: 3/30/2019
-  Time: 1:40 PM
+  Date: 3/31/2019
+  Time: 11:05 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +19,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th></th>
+
 
     </tr>
     <c:forEach var="user" items="${users}">
@@ -27,13 +27,6 @@
             <td><c:out value="${user.firstname}"/></td>
             <td><c:out value="${user.lastname}"/></td>
             <td><c:out value="${user.email}"/></td>
-            <td>
-                <form action="delete" method="post">
-                    <input type="hidden" name="action" value="remove">
-                    <input type="hidden" value="${user.id}" name="id">
-                    <input type="submit" value="remove">
-                </form>
-            </td>
         </tr>
 
     </c:forEach>

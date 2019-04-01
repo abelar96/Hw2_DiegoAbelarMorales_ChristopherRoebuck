@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/styleMain.css">
+</head>
+<body>
+<div>
+<h1>User was added/updated successfully</h1>
+<form action="viewAll" method="post">
+    <input type="hidden" name="action" value="viewAll"><input type="submit" value="View Users">
+</form>
+
+<form action="delete" method="post">
+    <input type="hidden" name="action" value="delete"><input type="submit" value="Delete Users">
+</form>
+
+<form action="update" method="post">
+    <input type="hidden" name="action" value="update"><input type="submit" value="Update Users">
+</form>
+
+<a href="search.html"><button>Search Users</button></a><br><br>
+
+<a href="index.html"> <button> Return to Main Page</button></a>
+</div>
+
+</body>
+</html>

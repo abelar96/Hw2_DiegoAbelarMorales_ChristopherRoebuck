@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class EmailListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String url ="/index.html";
+        String url = null;
 
         String action = request.getParameter("action");
 
@@ -21,27 +21,57 @@ public class EmailListServlet extends HttpServlet {
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
 
-          //  email = SimpleEncypt.EncryptString(email); // Encryption
             User user = new User(firstName,lastName,email);
-            UserDB.insert(user); // static method, do not need to initialize object //
+            UserDB.insert(user);
+
+            url ="/success.html";
+            // static method, do not need to initialize object //
             // add mysql:mysql-connector-java:5.1.47 to maeven library
-            //
 
         }
         else if (action.equals("viewAll")){
 
             ArrayList<User> users = UserDB.selectUsers();
             request.setAttribute("users",users);
-            url= "/viewAll.jsp";
+
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/viewAll.jsp";
+            }
+
+
         }
         else if (action.equals("delete")){
 
-            String email = request.getParameter("email");
-            UserDB.delete(email);
-          //fetch data again
             ArrayList<User> users = UserDB.selectUsers();
             request.setAttribute("users",users);
-            url= "/viewAll.jsp";
+
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/delete.jsp";
+            }
+            ;
+
+        }
+        else if (action.equals("remove")){
+            int email = Integer.parseInt(request.getParameter("id"));
+            UserDB.delete(email);
+
+            ArrayList<User> users = UserDB.selectUsers();
+            request.setAttribute("users",users);
+
+
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/delete.jsp";
+            }
+
 
         }
         else if (action.equals("update")){
@@ -53,17 +83,67 @@ public class EmailListServlet extends HttpServlet {
         }
         else if (action.equals("updateR")){
 
+          int id = Integer.parseInt(request.getParameter("id"));
+           User user = UserDB.selectUser(id);
+            request.setAttribute("user",user);
+
+           url="/updateR.jsp";
+
+        }
+        else if (action.equals("updateRecord")){
+
+            int id = Integer.parseInt(request.getParameter("id"));
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
 
-            User user = new User(firstName,lastName,email);
+            User user = new User(firstName,lastName,email,id);
             UserDB.update(user);
 
-            ArrayList<User> users = UserDB.selectUsers();
-            request.setAttribute("users",users);
-            url= "/update.jsp";
+            url ="/success.html";
+
         }
+        else if(action.equals("searchFname")){
+            String fname = request.getParameter("firstName");
+            ArrayList<User> users = UserDB.selectUsersByFname(fname);
+            request.setAttribute("users",users);
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/search.jsp";
+            }
+
+
+        }
+        else if(action.equals("searchLname")){
+            String lname = request.getParameter("lastName");
+            ArrayList<User> users = UserDB.selectUsersByLname(lname);
+            request.setAttribute("users",users);
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/search.jsp";
+            }
+
+
+        }
+        else if(action.equals("searchEmail")){
+            String email = request.getParameter("email");
+            ArrayList<User> users = UserDB.selectUsersByEmail(email);
+            request.setAttribute("users",users);
+
+            if (users.size() ==0){
+                url ="/noUsersFound.html";
+            }
+            else {
+                url= "/search.jsp";
+            }
+
+
+        }
+
         getServletContext().getRequestDispatcher(url).forward(request,response);
 
 

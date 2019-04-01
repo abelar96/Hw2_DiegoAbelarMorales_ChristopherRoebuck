@@ -10,21 +10,17 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        table,th,td{
-            border-collapse: collapse;
-            border:1px solid black;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styleMain.css">
+
 </head>
 <body>
+<div>
 <table>
 <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
-    <th></th>
+
 
 </tr>
     <c:forEach var="user" items="${users}">
@@ -32,17 +28,11 @@
         <td><c:out value="${user.firstname}"/></td>
         <td><c:out value="${user.lastname}"/></td>
         <td><c:out value="${user.email}"/></td>
-        <td>
-            <form action="update.jsp" method="post">
-                <input type="hidden" name="action" value="delete">
-                <input id="xs" type="hidden" value="${user.email}" name="email">
-                <input type="submit" value="remove">
-            </form>
-        </td>
     </tr>
 
         </c:forEach>
-    </table>
-
+    </table><br><br>
+<a href="index.html"> <button> Return to Main Page</button></a>
+</div>
 </body>
 </html>
